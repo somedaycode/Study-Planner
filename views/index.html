@@ -5,8 +5,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style/style.css" />
+    <script
+      defer
+      src="https://kit.fontawesome.com/195eeb158a.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="/js/main.js" defer></script>
     <title>study planner</title>
   </head>
-  <body></body>
+  <body>
+    <main class="planner container is-max-widescreen">
+      <div class="container-wrap columns is-multiline">
+        <aside class="menu column is-one-quarter">
+          <nav class="menu-bar">
+            <div><i class="fas fa-bars"></i></div>
+          </nav>
+          <p class="menu-label">General</p>
+          <ul class="menu-list">
+            <li>
+              <a>
+                <span>Home</span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li><a>Memo</a></li>
+          </ul>
+          <p class="menu-label">Administration</p>
+          <ul class="menu-list">
+            <li><a>Settings</a></li>
+          </ul>
+        </aside>
+        <section class="main-view column">
+          <div class="view-contents">
+            <div class="content-timer">
+              <div class="timer">
+                <div class="timer-tabs tabs is-boxed">
+                  <ul>
+                    <li class="is-active"><a>오늘 공부 시간</a></li>
+                    <li><a>총 공부 시간</a></li>
+                  </ul>
+                  <span class="timer-today">00:00</span>
+                </div>
+                <div class="timer-show">
+                  <div class="timer-current"><span>00:00:00</span></div>
+                  <div class="timer-btn"><button>시작</button></div>
+                </div>
+              </div>
+            </div>
+            <div class="content-weather">
+              <div class="weather">여기엔 날씨</div>
+            </div>
+          </div>
+          <div class="view-todo">
+            <ul class="todo-lists">
+              <li>sadfsdfdf</li>
+              <li>asdfadsfadf</li>
+              <li>asdfadsfasdf</li>
+              <li>asdfasdfsd</li>
+              <li>asdfasdfa</li>
+            </ul>
+            <div class="todo__input">
+              <input
+                type="text"
+                name="todo-input"
+                class="input-memo input is-primary is-rounded"
+              />
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
 </html>

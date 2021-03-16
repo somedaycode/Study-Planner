@@ -1,4 +1,65 @@
 @import './reset.css';
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
 
+.planner {
+    height: 30rem;
+}
 
+.container-wrap {
+    height: 100%;
+}
+
+.menu {
+    width: 20%;
+}
+
+.menu-bar {
+    cursor: pointer;
+} 
+
+.main-view {
+    position: relative;
+}
+
+.view-contents {
+    display: flex;
+}
+
+.content-timer {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.timer {
+    display: flex;
+    text-align: center;
+}
+
+.timer-tabs {
+    display: flex;
+    flex-direction: column;
+    height: 5rem;
+}
+
+.timer-show {
+    margin: 0 auto;
+    display: flex;
+    align-self: center;
+}
+
+.view-todo {
+    height: 20rem;
+    position: relative;
+}
+
+.todo-lists {
+    overflow: hidden;
+}
+
+.input-memo {
+    height: 2rem;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
