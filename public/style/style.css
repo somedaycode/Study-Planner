@@ -10,15 +10,43 @@
 }
 
 .menu {
+    padding: 2rem;
     width: 20%;
+    position: relative;
+    animation: fade-in 0.3s;
 }
 
-.menu-bar {
-    cursor: pointer;
-} 
+@keyframes fade-in {
+    from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+}
 
 .main-view {
+    width: 100%;
     position: relative;
+}
+
+.view-btn-container {
+    left: -1rem;
+    height: 100%;
+    width: 0.4rem;
+    position: absolute;
+}
+
+.main-view-btn {
+    top: 50%;
+    left: 0;
+    height: 5rem;
+    width: 0.4rem;
+    position: absolute;
+    border-radius: 20%;
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transform: translate(-50%, -50%);
 }
 
 .view-contents {
@@ -62,4 +90,14 @@
     width: 100%;
     bottom: 0;
     position: absolute;
+}
+
+
+/* 
+ show and hide
+*/
+
+.hidden {
+    display: none;
+    opacity: 0;
 }

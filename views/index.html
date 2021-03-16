@@ -10,16 +10,13 @@
       src="https://kit.fontawesome.com/195eeb158a.js"
       crossorigin="anonymous"
     ></script>
-    <script src="/js/main.js" defer></script>
+    <script type="module" src="/js/main.js" defer></script>
     <title>study planner</title>
   </head>
   <body>
     <main class="planner container is-max-widescreen">
       <div class="container-wrap columns is-multiline">
         <aside class="menu column is-one-quarter">
-          <nav class="menu-bar">
-            <div><i class="fas fa-bars"></i></div>
-          </nav>
           <p class="menu-label">General</p>
           <ul class="menu-list">
             <li>
@@ -40,6 +37,9 @@
           </ul>
         </aside>
         <section class="main-view column">
+          <div class="view-btn-container">
+            <div class="main-view-btn"></div>
+          </div>
           <div class="view-contents">
             <div class="content-timer">
               <div class="timer">

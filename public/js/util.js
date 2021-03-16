@@ -35,4 +35,4 @@ export const debounce = (fn, ms) => {
     }, ms);
   };
 };
-export { _, delay, insertTemplate, debounce };
+export { _, delay, insertTemplate };
