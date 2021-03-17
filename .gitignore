@@ -5,3 +5,5 @@ test.html
 reset.css
 
 /node_modules/
+
+/public/data/
