@@ -76,6 +76,23 @@
     align-self: center;
 }
 
+.content-weather {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.weather-items {
+    padding: 0 2rem;
+}
+
 .view-todo {
     height: 20rem;
     position: relative;
