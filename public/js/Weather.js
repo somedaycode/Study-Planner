@@ -8,6 +8,7 @@ class Weather {
 
   init() {
     this.loadWeatherStatus();
+    this.fetchData();
   }
 
   loadWeatherStatus() {
@@ -16,7 +17,7 @@ class Weather {
       this.getGeolocation();
     } else {
       const parsedCoord = JSON.parse(currentLocation);
-      this.getWeatherAPI(parsedCoord);
+      this.sendCoordData(parsedCoord);
     }
   }
 
@@ -28,25 +29,33 @@ class Weather {
         latitude,
         longitude,
       };
+      this.test = coordsObj;
       this.saveCoords(coordsObj);
-      this.getWeatherAPI(coordsObj);
+      this.sendCoordData(coordsObj);
     });
   }
 
-  getWeatherAPI = ({ latitude, longitude }) => {
-    const serviceKey =
-      'O%2Bj3FsaYtTiaBzr4QTmqGuNS%2Bgflc%2FHdaldkCNDayWirwSI1faD6aPPW6q7EhdQoCsri%2BAbx%2FfUHn2sibtx9Hg%3D%3D';
-    const constpageNo = '1';
-    const constnumOfRows = '10';
-    const constdataType = 'JSON';
-    const base_date = '20210301';
-    const base_time = '20151201';
-    const nx = latitude;
-    const ny = longitude;
-  };
+  async sendCoordData(coordsObj) {
+    await fetch('/', {
+      method: 'put',
+      body: JSON.stringify(coordsObj),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 
   saveCoords(coordinates) {
     sessionStorage.setItem(this.COORD, JSON.stringify(coordinates));
+  }
+
+  async fetchData() {
+    const res = await fetch('data')
+      .then((raw) => raw.json())
+      .then((res) => res.response.body);
+    const weatherData = await res.items.item;
+    const test = Array.from(weatherData).filter((v) => v.category === 'POP');
+    console.log(test);
   }
 }
 
