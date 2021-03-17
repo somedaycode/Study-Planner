@@ -7,9 +7,9 @@ const DOMTargets = {
   menuBtn: _.$('.main-view-btn'),
 };
 
-const main = async () => {
+const main = () => {
   new Menu(DOMTargets);
   new Weather(DOMTargets);
 };
 
-_.on(window, 'DOMContentLoaded', main);
+main();
