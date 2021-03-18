@@ -16,81 +16,83 @@
   <body>
     <main class="planner container is-max-widescreen">
       <div class="container-wrap columns is-multiline">
-        <aside class="menu column is-one-quarter">
-          <p class="menu-label">General</p>
-          <ul class="menu-list">
-            <li>
-              <a>
-                <span>Home</span>
-              </a>
-            </li>
-            <li>
-              <a>
-                <span>Dashboard</span>
-              </a>
-            </li>
-            <li><a>Memo</a></li>
-          </ul>
-          <p class="menu-label">Administration</p>
-          <ul class="menu-list">
-            <li><a>Settings</a></li>
-          </ul>
-        </aside>
-        <section class="main-view column">
-          <div class="view-btn-container">
-            <div class="main-view-btn"></div>
-          </div>
-          <div class="view-contents">
-            <div class="content-timer">
-              <div class="timer">
-                <div class="timer-tabs tabs is-boxed">
-                  <ul>
-                    <li class="is-active"><a>오늘 공부 시간</a></li>
-                    <li><a>총 공부 시간</a></li>
-                  </ul>
-                  <span class="timer-today">00:00</span>
-                </div>
-                <div class="timer-show">
-                  <div class="timer-current">
-                    <span class="hour">00</span>
-                    <span>:</span>
-                    <span class="minute">00</span>
-                    <span>:</span>
-                    <span class="second">00</span>
-                  </div>
-                  <div class="timer-btn">
-                    <button class="btn-start">Start</button>
-                    <button class="btn-stop" disabled>Reset</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="content-weather">
-              <div class="weather">
-                <div class="weather-text weather-items">
-                  <h3>광교 1동</h3>
-                  <span>몇몇 도, 흐림</span>
-                </div>
-                <div class="weather-img weather-items">여긴 이미지</div>
-              </div>
-            </div>
-          </div>
-          <div class="view-todo">
-            <ul class="todo-lists">
-              <li>sadfsdfdf</li>
-              <li>asdfadsfadf</li>
-              <li>asdfadsfasdf</li>
-              <li>asdfasdfsd</li>
-              <li>asdfasdfa</li>
+        <section class="main-wrap">
+          <aside class="menu column is-one-quarter">
+            <p class="menu-label">General</p>
+            <ul class="menu-list">
+              <li>
+                <a>
+                  <span>Home</span>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li><a>Memo</a></li>
             </ul>
-            <div class="todo__input">
-              <input
-                type="text"
-                name="todo-input"
-                class="input-memo input is-rounded"
-              />
+            <p class="menu-label">Administration</p>
+            <ul class="menu-list">
+              <li><a>Settings</a></li>
+            </ul>
+          </aside>
+          <section class="main-view column">
+            <div class="view-btn-container">
+              <div class="main-view-btn"></div>
             </div>
-          </div>
+            <div class="view-contents">
+              <div class="content-timer">
+                <div class="timer">
+                  <div class="timer-tabs tabs is-boxed">
+                    <ul>
+                      <li class="is-active"><a>오늘 공부 시간</a></li>
+                      <li><a>총 공부 시간</a></li>
+                    </ul>
+                    <span class="timer-today">00:00</span>
+                  </div>
+                  <div class="timer-show">
+                    <div class="timer-current">
+                      <span class="hour">00</span>
+                      <span>:</span>
+                      <span class="minute">00</span>
+                      <span>:</span>
+                      <span class="second">00</span>
+                    </div>
+                    <div class="timer-btns">
+                      <button class="timer-btn btn-start">Start</button>
+                      <button class="timer-btn btn-stop" disabled>Reset</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="content-weather">
+                <div class="weather">
+                  <div class="weather-text weather-items">
+                    <h3>광교 1동</h3>
+                    <span>몇몇 도, 흐림</span>
+                  </div>
+                  <div class="weather-img weather-items">여긴 이미지</div>
+                </div>
+              </div>
+            </div>
+            <div class="view-todo">
+              <ul class="todo-lists">
+                <li>sadfsdfdf</li>
+                <li>asdfadsfadf</li>
+                <li>asdfadsfasdf</li>
+                <li>asdfasdfsd</li>
+                <li>asdfasdfa</li>
+              </ul>
+              <div class="todo__input">
+                <input
+                  type="text"
+                  name="todo-input"
+                  class="input-memo input is-rounded"
+                />
+              </div>
+            </div>
+          </section>
         </section>
       </div>
     </main>
