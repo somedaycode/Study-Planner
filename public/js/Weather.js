@@ -12,6 +12,8 @@ class Weather {
     this.code = {
       temperature: 'T1H',
       sky: 'SKY',
+      precipitation: 'PTY',
+      rainfall: 'RN1',
     };
   }
 
