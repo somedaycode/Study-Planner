@@ -14,7 +14,7 @@ const writefile = (fileData) => {
 const getBaseTime = (hour) => {
   if (hour === '00') hour = 24;
   else hour = Number(hour);
-  let baseTime = String(hour);
+  let baseTime = String(hour - 1);
   if (baseTime.length === 1) baseTime = '0' + baseTime;
   if (baseTime === '24') baseTime = '00';
   return baseTime + '00';
