@@ -151,7 +151,7 @@ html {
 
 .todo-lists {
     padding-left: 0.5rem;
-    height: 95%;
+    height: 80%;
     overflow-y: auto;
 }
 
@@ -177,10 +177,15 @@ html {
 
 .todo__input {
     height: 3.5rem;
+    width: 90%;
+    bottom: 0.5rem;
+    position: absolute;
+}
+
+.input-memo {
+    height: 3.5rem;
     width: 100%;
-    display: flex;
-    align-items: center;
-    position: relative;
+    font-size: 1.2rem;
 }
 
 .task {
@@ -188,8 +193,13 @@ html {
 }
 
 .list-trash {
+    padding-right: 1.5rem;
     position: absolute;
     right: 0;
+}
+
+.check-circle {
+    z-index: 1;
 }
 
 .check-circle-o {
@@ -199,10 +209,11 @@ html {
 }
 
 .fa-check {
+    padding: 0.5rem;
     position: absolute;
     font-size: 1.6rem;
-    left: 1px;
-    top: 4px;
+    left: -7px;
+    top: -4px;
 }
 
 .check-hidden {
@@ -221,14 +232,19 @@ html {
     cursor: pointer;
 }
 
-.input-memo {
-    height: 2rem;
-    width: 100%;
+.weather-sky {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.weather-text {
+    text-align: center;
 }
 
 
+
 /* 
- show and hide
+Category Section
 */
 
 .hidden {
