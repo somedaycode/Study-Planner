@@ -20,6 +20,7 @@ export class Memo {
 
   keyupHandler({ keyCode }) {
     if (keyCode !== 13) return;
+    if (!this.toDoinput.value) return;
     this.renderToDolist();
     this.initInputValue();
   }
@@ -54,7 +55,7 @@ export class Memo {
     const TODOElements = {
       list: target.closest('.todo-list'),
       check: target.closest('.fa-check'),
-      task: target.closest('.task'),
+      task: target.closest('.todo-list').querySelector('.task'),
     };
     this.completeTask(TODOElements);
   }
@@ -67,5 +68,7 @@ export class Memo {
 
   deleteClickHandler({ target }) {
     if (!target.closest('.list-trash')) return;
+    const currentList = target.closest('.todo-list');
+    currentList.remove();
   }
 }
