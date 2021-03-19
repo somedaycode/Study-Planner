@@ -20,6 +20,10 @@ const DOMTargets = {
     toDoLists: _.$('.todo-lists'),
     input: _.$('.input-memo'),
   },
+  weather: {
+    textWrap: _.$('.weather-text'),
+    imgWrap: _.$('.weather-img'),
+  },
 };
 
 const main = () => {
