@@ -1,11 +1,11 @@
-import { _ } from './util.js';
+import { _, insertTemplate } from './util.js';
 /*
  * 맑음	 0 ～ 5
  * 구름많음	 6 ～ 8
  * 흐림	 9 ～ 10
  */
 class Weather {
-  constructor(target) {
+  constructor({ weather }) {
     this.init();
     this.COORD = 'COORD';
     this.weatherInfo;
@@ -15,11 +15,15 @@ class Weather {
       precipitation: 'PTY',
       rainfall: 'RN1',
     };
+    this.weatherTextWrap = weather.textWrap;
+    this.weatherIMGWrap = weather.imgWrap;
   }
 
   init() {
     this.loadWeatherStatus();
-    this.fetchData();
+    setTimeout(() => {
+      this.fetchData();
+    }, 1000);
   }
 
   loadWeatherStatus() {
@@ -33,22 +37,26 @@ class Weather {
   }
 
   getGeolocation() {
-    navigator.geolocation.getCurrentPosition((pos) => {
-      const latitude = pos.coords.latitude;
-      const longitude = pos.coords.longitude;
-      const coordsObj = {
-        latitude,
-        longitude,
-      };
-      this.test = coordsObj;
-      this.saveCoords(coordsObj);
-      this.sendCoordData(coordsObj);
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition((pos) => {
+        const latitude = pos.coords.latitude;
+        const longitude = pos.coords.longitude;
+        const coordsObj = {
+          latitude,
+          longitude,
+        };
+        this.test = coordsObj;
+        resolve(this.test);
+      });
+    }).then((coord) => {
+      this.saveCoords(coord);
+      this.sendCoordData(coord);
     });
   }
 
-  async sendCoordData(coordsObj) {
-    await fetch('/', {
-      method: 'put',
+  sendCoordData(coordsObj) {
+    fetch('/data', {
+      method: 'post',
       body: JSON.stringify(coordsObj),
       headers: {
         'Content-Type': 'application/json',
@@ -64,16 +72,20 @@ class Weather {
     const cacheName = 'weatherCache';
     const cacheStorage = await caches.open(cacheName);
     const cachedData = await cacheStorage.match('weatherData');
-    if (cachedData) {
-      const data = await cachedData.json();
-      this.getWeatherInfoList(data);
-    } else {
-      const data = await fetch('/data').then((res) => {
-        let resClone = res.clone();
-        cacheStorage.put(cacheName, resClone);
-        return res.json();
-      });
-      this.getWeatherInfoList(data);
+    try {
+      if (cachedData) {
+        const data = await cachedData.json();
+        this.getWeatherInfoList(data);
+      } else {
+        const data = await fetch('/data').then((res) => {
+          let resClone = res.clone();
+          cacheStorage.put(cacheName, resClone);
+          return res.json();
+        });
+        this.getWeatherInfoList(data);
+      }
+    } catch {
+      (err) => console.log(err);
     }
   }
 
@@ -81,9 +93,13 @@ class Weather {
     const data = await responseData.response.body;
     const weatherData = await data.items.item;
     this.weatherInfo = Array.from(weatherData);
-    const currentTemp = this.getWeatherForcastValue(this.code.temperature);
-    const currentSky = this.getWeatherForcastValue(this.code.sky);
-    console.log(currentTemp, currentSky);
+    const weatherStatus = {
+      temperature: this.getWeatherForcastValue(this.code.temperature),
+      sky: this.getWeatherForcastValue(this.code.sky),
+      precipitation: this.getWeatherForcastValue(this.code.precipitation),
+      rainfall: this.getWeatherForcastValue(this.code.rainfall),
+    };
+    this.renderWeatherInfo(weatherStatus);
   }
 
   getWeatherForcastValue(code) {
@@ -101,10 +117,42 @@ class Weather {
     }
     return prev.fcstTime > curr.fcstTime ? curr : prev;
   }
+
+  renderWeatherInfo({ temperature, sky, precipitation, rainfall }) {
+    const temperatureStatus = this.temperatureTemplate(temperature);
+    const skystatus = this.skyStatusTemplate(sky);
+    insertTemplate(this.weatherTextWrap, 'beforeend', temperatureStatus);
+    insertTemplate(this.weatherIMGWrap, 'beforeend', skystatus);
+    console.log(precipitation);
+    console.log(rainfall);
+  }
+
+  temperatureTemplate(celcius) {
+    return `<span>${celcius}°C</span>`;
+  }
+
+  skyStatusTemplate(sky) {
+    if (sky < 6) {
+      return `
+        <div class="weather-sky">
+          <img src="/img/001-sun.svg" alt="sunny" />
+        </div>`;
+    }
+
+    if (5 < sky <= 8) {
+      return `
+      <div class="weather-sky">
+        <img src="/img/002-cloud.svg" alt="cloudy" />
+      </div>`;
+    }
+
+    if (sky > 8) {
+      return `
+      <div class="weather-sky">
+        <img src="/img/003-cloudy.svg" alt="cloudy" />
+      </div>`;
+    }
+  }
 }
 
-// 온도, 날씨상태 구했다.
-// 네이버 api로 주소가져오자
-// 혹은 카카오 지도
-// 하....
 export { Weather };
