@@ -1,10 +1,15 @@
 @import './reset.css';
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
 
+html {
+    background: whitesmoke;
+}
+
 .planner {
     margin-top: 2.5rem;
     height: 30rem;
     border: 1px solid grey;
+    border-radius: 1rem;
 }
 
 .container-wrap {
@@ -80,6 +85,10 @@
     height: 5rem;
 }
 
+.timer-tabs ul {
+    border: 0;
+}
+
 .timer-show {
     margin: 0 auto;
     display: flex;
@@ -135,19 +144,86 @@
 }
 
 .view-todo {
+    padding: 2rem;
     height: 20rem;
     position: relative;
 }
 
 .todo-lists {
-    overflow: hidden;
+    padding-left: 0.5rem;
+    height: 95%;
+    overflow-y: auto;
+}
+
+.todo-lists::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+.todo-lists::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 1rem;
+}
+
+.todo-lists::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 1rem;
+}
+
+.todo-list {
+    padding: 0.25rem 0;
+    font-size: 1.3rem;
+    position: relative;
+}
+
+.todo__input {
+    height: 3.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.task {
+    padding-left: 0.5rem;
+}
+
+.list-trash {
+    position: absolute;
+    right: 0;
+}
+
+.check-circle-o {
+    user-select: none;
+    pointer-events: none;
+    position: relative;
+}
+
+.fa-check {
+    position: absolute;
+    font-size: 1.6rem;
+    left: 1px;
+    top: 4px;
+}
+
+.check-hidden {
+    opacity: 0;
+}
+
+.list-done {
+    opacity: 0.6;
+}
+
+.task-done {
+    text-decoration: line-through;
+}
+
+.fa-trash-o {
+    cursor: pointer;
 }
 
 .input-memo {
     height: 2rem;
     width: 100%;
-    bottom: 0;
-    position: absolute;
 }
 
 
