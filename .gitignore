@@ -7,3 +7,7 @@ reset.css
 /node_modules/
 
 geo-*.json
+
+/public/img
+
+/public/data
