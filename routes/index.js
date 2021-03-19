@@ -8,10 +8,11 @@ router.get('/', (req, res, next) => {
   res.render('index.html');
 });
 
-router.put('/', function (req, res, next) {
+router.post('/data', function (req, res, next) {
   const { latitude, longitude } = req.body;
   const coord = coordConverter('toXY', latitude, longitude);
   requestWeatherInfo(coord);
+  res.end();
 });
 
 module.exports = router;
