@@ -2,6 +2,7 @@ import { _ } from './util.js';
 import { Menu } from './Menu.js';
 import { Weather } from './Weather.js';
 import { Timer } from './Timer.js';
+import { Memo } from './Memo.js';
 
 const DOMTargets = {
   menu: _.$('.menu'),
@@ -12,7 +13,12 @@ const DOMTargets = {
     minutes: _.$('.minute'),
     seconds: _.$('.second'),
     start: _.$('.btn-start'),
-    stop: _.$('.btn-stop'),
+    finish: _.$('.btn-finish'),
+  },
+  view: {
+    toDoWrap: _.$('.view-todo'),
+    toDoLists: _.$('.todo-lists'),
+    input: _.$('.input-memo'),
   },
 };
 
@@ -20,6 +26,7 @@ const main = () => {
   new Menu(DOMTargets);
   new Weather(DOMTargets);
   new Timer(DOMTargets);
+  new Memo(DOMTargets);
 };
 
 main();
