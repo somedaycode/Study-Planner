@@ -14,16 +14,18 @@ const writefile = (fileData) => {
 const getBaseTime = (hour) => {
   if (hour === '00') hour = 24;
   else hour = Number(hour);
-  let baseTime = String(hour - 1);
+  let baseTime = String(hour);
   if (baseTime.length === 1) baseTime = '0' + baseTime;
+  if (baseTime === '24') baseTime = '00';
   return baseTime + '00';
 };
 
 const requestWeatherInfo = (grid) => {
   moment.tz.setDefault('Asia/Seoul');
-  const date = moment().format('YYYYMMDD');
   const time = moment().format('HH');
   const baseTime = getBaseTime(time);
+  const date = moment().format('YYYYMMDD');
+  console.log(baseTime);
 
   const callbackURL =
     'http://apis.data.go.kr/1360000/VilageFcstInfoService/getUltraSrtFcst';
@@ -40,6 +42,7 @@ const requestWeatherInfo = (grid) => {
 
   request(URL, (err, res, body) => {
     const weatherData = body;
+
     writefile(weatherData);
   });
 };
